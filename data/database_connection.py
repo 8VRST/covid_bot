@@ -29,32 +29,32 @@ class Database:
                 Database.connection_to_the_database.close()
 
 
-        # def data_skeleton():
+        def data_skeleton():
 
-        #         info_execute = 'select * from covid_stat'
-        #         Database.cursor.execute(info_execute)
+                info_execute = 'select * from covid_stat'
+                Database.cursor.execute(info_execute)
 
-        #         rows = Database.cursor.fetchall()
+                rows = Database.cursor.fetchall()
 
-        #         covid_stat_countries = [row[2] for row in rows]
+                covid_stat_countries = [row[2] for row in rows]
 
-        #         data_list = covidparser.CovidInfoParser.covid_data_world()
-        #         datestamp = str(datetime.date.today().strftime('%d.%m.%Y'))
-        #         timestamp = str(datetime.datetime.now().strftime('%H:%M:%S'))
-        #         Database.cursor.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
-        #         (datestamp, timestamp, 'World', data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], data_list[12], data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
-        #         Database.connection_to_the_database.commit()
+                data_list = covidparser.CovidInfoParser.covid_data_world()
+                datestamp_world = str(datetime.date.today().strftime('%d.%m.%Y'))
+                timestamp_world = str(datetime.datetime.now().strftime('%H:%M'))
+                Database.cursor.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+                (datestamp_world, timestamp_world, 'World', data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], data_list[12], data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
+                Database.connection_to_the_database.commit()
 
-        #         for country in countries_dictionary[0]:
-        #                 if country not in  covid_stat_countries:
-        #                         data_list = covidparser.CovidInfoParser.covid_data_countries(country)
-        #                         datestamp = str(datetime.date.today().strftime('%d.%m.%Y'))
-        #                         timestamp = str(datetime.datetime.now().strftime('%H:%M:%S'))
-        #                         Database.cursor.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
-        #                         (datestamp, timestamp, country, data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], data_list[11], data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
-        #                         Database.connection_to_the_database.commit()
+                for country in countries_dictionary[0]:
+                        if country not in  covid_stat_countries:
+                                data_list = covidparser.CovidInfoParser.covid_data_countries(country)
+                                datestamp = str(datetime.date.today().strftime('%d.%m.%Y'))
+                                timestamp = str(datetime.datetime.now().strftime('%H:%M'))
+                                Database.cursor.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+                                (datestamp, timestamp, country, data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], data_list[11], data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
+                                Database.connection_to_the_database.commit()
 
-        #         Database.connection_to_the_database.close()
+                Database.connection_to_the_database.close()
 
         def data_updater():
                 
