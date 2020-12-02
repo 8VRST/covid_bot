@@ -14,7 +14,7 @@ from neverpushit import database_host, database_name, database_password, databas
 class Database:
 
         connection_to_the_database = psycopg2.connect(
-                        host=database_host
+                        host=database_host,
                         database=database_name,
                         user=database_user,
                         password=database_password)
@@ -38,13 +38,20 @@ class Database:
 
         #         covid_stat_countries = [row[2] for row in rows]
 
+        #         data_list = covidparser.CovidInfoParser.covid_data_world()
+        #         datestamp = str(datetime.date.today().strftime('%d.%m.%Y'))
+        #         timestamp = str(datetime.datetime.now().strftime('%H:%M:%S'))
+        #         Database.cursor.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+        #         (datestamp, timestamp, 'World', data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], data_list[12], data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
+        #         Database.connection_to_the_database.commit()
+
         #         for country in countries_dictionary[0]:
         #                 if country not in  covid_stat_countries:
-        #                         data_list = covidparser.CovidInfoParser.covid_data_countries(country)[1]
+        #                         data_list = covidparser.CovidInfoParser.covid_data_countries(country)
         #                         datestamp = str(datetime.date.today().strftime('%d.%m.%Y'))
         #                         timestamp = str(datetime.datetime.now().strftime('%H:%M:%S'))
-        #                         cur.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
-        #                         (datestamp, timestamp, country, data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], 'New_recovered', data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
+        #                         Database.cursor.execute('insert into covid_stat (Last_update_date, Last_update_time, Country, Cases, New_cases, Active_cases, Cases_per1M, Recovered, New_recovered, Critical_cases, Deaths, New_deaths, Deaths_per1M, Tests, Tests_per1M) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+        #                         (datestamp, timestamp, country, data_list[0], data_list[1], data_list[5], data_list[7], data_list[4], data_list[11], data_list[6], data_list[2], data_list[3], data_list[8], data_list[9], data_list[10],))
         #                         Database.connection_to_the_database.commit()
 
         #         Database.connection_to_the_database.close()
