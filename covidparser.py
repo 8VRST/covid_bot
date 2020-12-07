@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-import TelegramBotAPI
 import parser
 import requests
 import urllib3
@@ -93,10 +92,11 @@ class CovidInfoParser:
         country_per1M_deaths = str(countries_data_list[int(country_index_in_list())+10])
         countrys_total_tests = str(countries_data_list[int(country_index_in_list())+11])
         country_tests_per1M = str(countries_data_list[int(country_index_in_list())+12])
+        country_population = str(countries_data_list[int(country_index_in_list())+13])
 
         formatted_countries_data = [country_total_cases, country_new_cases, country_total_deaths, country_new_deaths, 
          country_total_recovered, country_active_cases, country_critical_cases, country_per1M_cases, country_per1M_deaths,
-         countrys_total_tests, country_tests_per1M, country_new_recovered]
+         countrys_total_tests, country_tests_per1M, country_new_recovered, country_population]
 
         for index_for_countries_data in range(len(formatted_countries_data)):
             if formatted_countries_data[index_for_countries_data] == '':
@@ -137,3 +137,4 @@ class CovidInfoParser:
 
 
         return formatted_world_data
+        
